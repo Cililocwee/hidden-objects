@@ -1,0 +1,79 @@
+.playing-field-img {
+  width: auto;
+  height: 500px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.selection-circles {
+  z-index: 99;
+}
+
+.animals-tag {
+  /* background-color: blue; */
+  height: 400px;
+  width: 600px;
+}
+
+.objects-tag {
+  height: 500px;
+  width: 450px;
+}
+
+.point {
+  display: inline-block;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  /* border-radius: 50%; */
+  border: 1px solid black;
+}
+
+.image-switcher-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.playing-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+}
+
+.owl-box {
+  border: 1px solid black;
+  padding: 5px 30px 50px;
+}
+
+.select-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.selection-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+}
+
+.selection,
+.selection-pane {
+  text-align: center;
+  width: 100%;
+}
+
+.selection:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "seek-and-find",
+
+    "public": "public"
+  }
+}
