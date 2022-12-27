@@ -10,13 +10,7 @@ export default function PopUpSelection({
   const [selection, setSelection] = useState("");
 
   const handleSelection = (choice, foo) => {
-    if (choice === "owl") {
-      setSelection("owl");
-    } else if (choice === "bear") {
-      setSelection("bear");
-    } else if (choice === "fox") {
-      setSelection("fox");
-    }
+    setSelection(choice);
     // removes choices after selection
     // TODO this feels dirty
     animalHandler(animalArray.filter((animal) => animal !== choice));

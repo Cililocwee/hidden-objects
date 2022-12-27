@@ -7,19 +7,23 @@ export default function PlayingField({
   altDisplay,
   classification,
 }) {
+  const originalSet = ["bear", "fox", "owl", "rabbit"];
+
   const [points, setPoints] = useState([]);
-  const [animalChoices, setAnimalChoices] = useState(["bear", "fox", "owl"]);
+  const [animalChoices, setAnimalChoices] = useState([...originalSet]);
 
   function handlePlaceTarget(e) {
-    if (points.length !== 3) {
+    if (points.length !== 4) {
       const { pageX, pageY } = e;
       setPoints([...points, { x: pageX - 35, y: pageY - 35 }]);
+
+      // ** for debugging click points
       console.log(points);
     }
   }
   function resetTargets() {
     setPoints([]);
-    setAnimalChoices(["bear", "fox", "owl"]);
+    setAnimalChoices(originalSet);
   }
 
   return (
