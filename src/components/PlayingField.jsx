@@ -4,7 +4,7 @@ import { useState } from "react";
 import SelectionCard from "./SelectionCard";
 import { AppContext } from "../AppContext";
 export default function PlayingField({ sourceImage, classification }) {
-  const { animalList, resetAnimalList } = useContext(AppContext);
+  const { animalList, resetAnimalList, fetchAnswers } = useContext(AppContext);
 
   // TODO queuedPoint will be queried against the db
   const [queuedPoint, setQueuedPoint] = useState([]);
@@ -56,6 +56,7 @@ export default function PlayingField({ sourceImage, classification }) {
           escapeHatch={removePoints}
         />
       ))}
+      <button onClick={() => fetchAnswers()}>Answers</button>
     </div>
   );
 }
