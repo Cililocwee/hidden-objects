@@ -3,16 +3,10 @@ import React, { useState, createContext } from "react";
 export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
-  const [animalList, setAnimalList] = useState([
-    "owl",
-    "rabbit",
-    "bear",
-    "deer",
-  ]);
+  const originalAnimalList = ["owl", "rabbit", "bear", "deer"];
+  const [animalList, setAnimalList] = useState(originalAnimalList);
 
   const foo = "apples";
-
-  const originalAnimalList = ["owl", "rabbit", "bear", "deer"];
 
   function resetAnimalList() {
     setAnimalList(originalAnimalList);

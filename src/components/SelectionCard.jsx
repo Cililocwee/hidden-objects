@@ -1,29 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppContext } from "../AppContext";
 
-export default function SelectionCard({ animalList, setAnimalList }) {
-  const [currentCoords, setCurrentCoords] = useState([]);
+export default function SelectionCard({ cardX, cardY, escapeHatch }) {
+  // todo record coords on click!
+  //   const [currentCoords, setCurrentCoords] = useState([cardX, cardY]);
   const [animalChoice, setAnimalChoice] = useState("");
 
-  const originalList = [...animalList];
+  const { animalList, changeAnimalList } = useContext(AppContext);
 
   function handleClick(choice) {
     setAnimalChoice(choice);
-
-    //!! Don't do this. Set context and store the animal list in the context
-    setAnimalList(animalList.filter((animal) => !choice));
+    changeAnimalList(choice, "remove");
+    // console.log(currentCoords);
   }
 
-  function handleCancel() {
-    setAnimalChoice("");
-    setAnimalList(originalList);
+  function handleCancel(e) {
+    changeAnimalList(animalChoice);
+    escapeHatch([cardX, cardY]);
   }
 
   if (!animalChoice) {
     return (
-      <div className="selection-card">
+      <div
+        className="selection-card"
+        style={{
+          left: cardX,
+          top: cardY,
+        }}
+      >
         {animalList?.map((animal) => {
           return (
-            <p className="animal" onClick={() => handleClick(animal)}>
+            <p className="animal" onClick={(e) => handleClick(animal, e)}>
               {animal}
             </p>
           );
@@ -33,7 +40,13 @@ export default function SelectionCard({ animalList, setAnimalList }) {
     );
   } else {
     return (
-      <div className="selection-card">
+      <div
+        className="selection-card"
+        style={{
+          left: cardX,
+          top: cardY,
+        }}
+      >
         <p onClick={handleCancel} className="cancel-btn">
           x
         </p>

@@ -1,39 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./components.css";
 import { useState } from "react";
-import PopUpSelection from "./PopUpSelection";
-export default function PlayingField({
-  sourceImage,
-  altDisplay,
-  classification,
-}) {
-  const originalSet = ["bear", "fox", "owl", "rabbit"];
+import SelectionCard from "./SelectionCard";
+import { AppContext } from "../AppContext";
+export default function PlayingField({ sourceImage, classification }) {
+  const { animalList, resetAnimalList } = useContext(AppContext);
 
+  // TODO queuedPoint will be queried against the db
   const [queuedPoint, setQueuedPoint] = useState([]);
   const [points, setPoints] = useState([]);
-  const [animalChoices, setAnimalChoices] = useState([...originalSet]);
-  const [animalsCoords, setAnimalsCorrds] = useState({
-    bear: [],
-    fox: [],
-    owl: [],
-    rabbit: [],
-  });
 
-  function handlePlaceTarget(e) {
-    if (points.length !== 4) {
-      const { pageX, pageY } = e;
-      setPoints([...points, { x: pageX - 35, y: pageY - 35 }]);
-      setQueuedPoint([pageX, pageY]);
-
-      // ** for debugging click points
-      // console.log(points);
-      console.log(queuedPoint);
+  // TODO Store these locations +- like 50 to database as the answers
+  function getTargetLocation(e) {
+    if (animalList.length === 0) {
+      return;
     }
+    let rect = e.currentTarget.getBoundingClientRect();
+    let x = e.clientX - rect.left - 75;
+    let y = e.clientY - rect.top - 50;
+
+    setPoints([...points, { x: x, y: y }]);
+    setQueuedPoint([x, y]);
+    console.log(queuedPoint);
   }
 
   function resetTargets() {
     setPoints([]);
-    setAnimalChoices(originalSet);
+    resetAnimalList();
+  }
+
+  function removePoints(arr) {
+    let newPoints = points.filter(
+      (obj) => obj.x !== arr[0] && obj.y !== arr[1]
+    );
+    setPoints(newPoints);
   }
 
   return (
@@ -41,7 +41,7 @@ export default function PlayingField({
       <button onClick={resetTargets}>Reset</button>
       <div
         className={classification}
-        onClick={handlePlaceTarget}
+        onClick={getTargetLocation}
         style={{
           backgroundImage: `url(${sourceImage})`,
           backgroundPosition: "center",
@@ -50,11 +50,10 @@ export default function PlayingField({
         }}
       ></div>
       {points.map((point) => (
-        <PopUpSelection
-          boxX={point.x}
-          boxY={point.y}
-          animalArray={animalChoices}
-          animalHandler={setAnimalChoices}
+        <SelectionCard
+          cardX={point.x}
+          cardY={point.y}
+          escapeHatch={removePoints}
         />
       ))}
     </div>
