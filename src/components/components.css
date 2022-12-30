@@ -77,3 +77,42 @@
 .selection:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.gameboard {
+  background-color: aliceblue;
+  /* border: 1px solid black; */
+  height: 100vh;
+}
+
+.selection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: aqua;
+  width: 100px;
+  min-height: 100px;
+  margin: 25px;
+  border-radius: 16px;
+  border: 2px solid black;
+  overflow: hidden;
+  position: relative;
+}
+
+.animal:hover {
+  background-color: gray;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.selection-card p {
+  margin: 0;
+}
+
+.cancel-btn {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}

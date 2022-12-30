@@ -9,18 +9,28 @@ export default function PlayingField({
 }) {
   const originalSet = ["bear", "fox", "owl", "rabbit"];
 
+  const [queuedPoint, setQueuedPoint] = useState([]);
   const [points, setPoints] = useState([]);
   const [animalChoices, setAnimalChoices] = useState([...originalSet]);
+  const [animalsCoords, setAnimalsCorrds] = useState({
+    bear: [],
+    fox: [],
+    owl: [],
+    rabbit: [],
+  });
 
   function handlePlaceTarget(e) {
     if (points.length !== 4) {
       const { pageX, pageY } = e;
       setPoints([...points, { x: pageX - 35, y: pageY - 35 }]);
+      setQueuedPoint([pageX, pageY]);
 
       // ** for debugging click points
-      console.log(points);
+      // console.log(points);
+      console.log(queuedPoint);
     }
   }
+
   function resetTargets() {
     setPoints([]);
     setAnimalChoices(originalSet);
