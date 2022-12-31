@@ -9,12 +9,7 @@ export const AppContextProvider = ({ children }) => {
   const originalAnimalList = ["owl", "rabbit", "bear", "deer"];
   const [animalList, setAnimalList] = useState(originalAnimalList);
   const [answerKey, setAnswerKey] = useState([]);
-  const [zoo, setZoo] = useState({
-    bear: [],
-    owl: [],
-    deer: [],
-    rabbit: [],
-  });
+  const [zoo, setZoo] = useState([]);
 
   function resetAnimalList() {
     setAnimalList(originalAnimalList);
@@ -76,10 +71,8 @@ export const AppContextProvider = ({ children }) => {
   }
 
   // stores each animal's coords in state obj
-  function manipulateZoo(choice, coords) {
-    // console.log(choice);
-    setZoo({ ...zoo, [choice]: coords });
-    // console.log(zoo);
+  function manipulateZoo(choice) {
+    setZoo([...zoo, choice]);
   }
 
   // exports the global states/methods

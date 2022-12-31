@@ -3,6 +3,7 @@ import "./components.css";
 import { useState } from "react";
 import SelectionCard from "./SelectionCard";
 import { AppContext } from "../AppContext";
+import GameScreen from "./GameScreen";
 export default function PlayingField({ sourceImage, classification }) {
   const {
     animalList,
@@ -11,10 +12,11 @@ export default function PlayingField({ sourceImage, classification }) {
     checkZoo,
     revealAnswers,
     startGame,
+    zoo,
   } = useContext(AppContext);
 
   // TODO queuedPoint will be queried against the db
-  const [queuedPoint, setQueuedPoint] = useState([]);
+
   const [points, setPoints] = useState([]);
 
   // TODO Store these locations +- like 50 to database as the answers
@@ -22,13 +24,13 @@ export default function PlayingField({ sourceImage, classification }) {
     if (animalList.length === 0) {
       return;
     }
+
     let rect = e.currentTarget.getBoundingClientRect();
     let x = e.clientX - rect.left - 75;
     let y = e.clientY - rect.top - 50;
 
-    setPoints([...points, { x: x, y: y }]);
-    setQueuedPoint([x, y]);
-    console.log(queuedPoint);
+    setPoints([{ x: x, y: y }]);
+    // console.log(queuedPoint);
   }
 
   function resetTargets() {
@@ -45,8 +47,18 @@ export default function PlayingField({ sourceImage, classification }) {
 
   return (
     <div className="playing-field">
-      <button onClick={() => startGame()}>Start!</button>
-      {/* <button onClick={resetTargets}>Reset</button> */}
+      <div className="game-banner">
+        <ul>
+          {animalList?.map((animal) => (
+            <li>{animal}</li>
+          ))}
+          {zoo?.map((animal) => (
+            <li style={{ textDecoration: "line-through" }}>{animal}</li>
+          ))}
+        </ul>{" "}
+        <button onClick={() => startGame()}>Start!</button>
+      </div>
+      <GameScreen></GameScreen>
       <div
         className={classification}
         onClick={getTargetLocation}
@@ -64,9 +76,6 @@ export default function PlayingField({ sourceImage, classification }) {
           escapeHatch={removePoints}
         />
       ))}
-      <button onClick={() => startGame()}>Collect answers from server</button>
-      <button onClick={() => revealAnswers()}>Reveal Answers</button>
-      <button onClick={checkZoo}>Check Zoo</button>
     </div>
   );
 }

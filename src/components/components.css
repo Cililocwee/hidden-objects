@@ -11,6 +11,7 @@
 
 .animals-tag {
   /* background-color: blue; */
+  margin-top: 125px;
   height: 400px;
   width: 600px;
 }
@@ -82,7 +83,6 @@
 
 .gameboard {
   background-color: aliceblue;
-  /* border: 1px solid black; */
   height: 100vh;
   position: relative;
 }
@@ -118,4 +118,28 @@
   right: 10px;
   top: 5px;
   cursor: pointer;
+}
+
+.game-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: red;
+  width: 100vw;
+  position: absolute;
+}
+
+.game-banner ul {
+  list-style: none;
+  display: flex;
+  width: 500px;
+  justify-content: space-evenly;
+}
+
+.game-screen {
+  width: 100%;
+  z-index: 99;
+  background-color: blue;
+  position: absolute;
+  top: 1000px;
 }
