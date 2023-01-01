@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import PlayingField from "./components/PlayingField";
+import AnimalsPic from "./assets/ONLY-IMG-find-10-animals.jpg";
+import GameOverlay from "./components/GameOverlay";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GameOverlay content="Hello world" />
+      <PlayingField sourceImage={AnimalsPic} classification="animals-tag" />
     </div>
   );
 }
