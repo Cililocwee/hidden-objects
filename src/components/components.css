@@ -136,10 +136,34 @@
   justify-content: space-evenly;
 }
 
-.game-screen {
+.overlay {
   width: 100%;
+  height: 100vh;
   z-index: 99;
   background-color: blue;
+  opacity: 90%;
   position: absolute;
-  top: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* top: 1000px; */
+}
+.overlay p {
+  font-size: 4em;
+  color: black;
+}
+
+#start-btn {
+  width: 200px;
+  height: 75px;
+  filter: drop-shadow(5px 5px 5px black);
+  font-size: 2em;
+  border-radius: 5px 16px 5px 16px;
+  transition: 1s;
+}
+
+#start-btn:hover {
+  background-color: black;
+  color: white;
 }

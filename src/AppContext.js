@@ -1,6 +1,5 @@
-import { async } from "@firebase/util";
 import { collection, getDocs } from "firebase/firestore";
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { db } from "./Firebase";
 
 export const AppContext = createContext(null);
@@ -10,6 +9,19 @@ export const AppContextProvider = ({ children }) => {
   const [animalList, setAnimalList] = useState(originalAnimalList);
   const [answerKey, setAnswerKey] = useState([]);
   const [zoo, setZoo] = useState([]);
+  const [gameStatus, setGameStatus] = useState("idle");
+  const [gameTimeStart, setGameTimeStart] = useState();
+  const [gameTimeFinish, setGameTimeFinish] = useState();
+  const [gameDuration, setGameDuration] = useState();
+
+  useEffect(() => {
+    if (animalList.length === 0) {
+      setGameStatus("complete");
+      setGameTimeFinish(gameTimerSnapshot());
+      setGameDuration(gameTimerSnapshot() - gameTimeStart);
+      console.log(gameDuration);
+    }
+  }, [animalList]);
 
   function resetAnimalList() {
     setAnimalList(originalAnimalList);
@@ -24,20 +36,6 @@ export const AppContextProvider = ({ children }) => {
     }
   }
 
-  // ** copy of startGame from debugging
-  // TODO prune***
-  // This queries the database for the answers
-  const fetchAnswers = async () => {
-    await getDocs(collection(db, "animal-locs")).then((querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setAnswerKey(newData);
-      console.log(answerKey, newData);
-    });
-  };
-
   //This queries the database for the answers and returns an object
   // containing keys of animals with their values for checking again
   async function startGame() {
@@ -48,6 +46,9 @@ export const AppContextProvider = ({ children }) => {
       }));
       setAnswerKey(newData);
       console.log("Fetch complete");
+      setGameStatus("in progress");
+      setGameTimeStart(gameTimerSnapshot());
+      console.log(gameTimerSnapshot());
     });
   }
 
@@ -75,12 +76,22 @@ export const AppContextProvider = ({ children }) => {
     setZoo([...zoo, choice]);
   }
 
+  function gameTimerSnapshot() {
+    return new Date().getTime();
+  }
+
+  function gameTimerStart() {
+    return new Date().getTime();
+  }
+
+  function gameTimerFinish(start) {
+    return new Date().getTime() - start;
+  }
   // exports the global states/methods
   const value = {
     animalList,
     resetAnimalList,
     changeAnimalList,
-    fetchAnswers,
     answerKey,
     checkZoo,
     zoo,
@@ -88,6 +99,9 @@ export const AppContextProvider = ({ children }) => {
     startGame,
     revealAnswers,
     convertArrOfObjsToObj,
+    gameStatus,
+    setGameStatus,
+    gameDuration,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -3,7 +3,8 @@ import "./components.css";
 import { useState } from "react";
 import SelectionCard from "./SelectionCard";
 import { AppContext } from "../AppContext";
-import GameScreen from "./GameScreen";
+import GameBanner from "./GameBanner";
+
 export default function PlayingField({ sourceImage, classification }) {
   const {
     animalList,
@@ -33,11 +34,6 @@ export default function PlayingField({ sourceImage, classification }) {
     // console.log(queuedPoint);
   }
 
-  function resetTargets() {
-    setPoints([]);
-    resetAnimalList();
-  }
-
   function removePoints(arr) {
     let newPoints = points.filter(
       (obj) => obj.x !== arr[0] && obj.y !== arr[1]
@@ -47,18 +43,8 @@ export default function PlayingField({ sourceImage, classification }) {
 
   return (
     <div className="playing-field">
-      <div className="game-banner">
-        <ul>
-          {animalList?.map((animal) => (
-            <li>{animal}</li>
-          ))}
-          {zoo?.map((animal) => (
-            <li style={{ textDecoration: "line-through" }}>{animal}</li>
-          ))}
-        </ul>{" "}
-        <button onClick={() => startGame()}>Start!</button>
-      </div>
-      <GameScreen></GameScreen>
+      <GameBanner />
+
       <div
         className={classification}
         onClick={getTargetLocation}
@@ -70,11 +56,7 @@ export default function PlayingField({ sourceImage, classification }) {
         }}
       ></div>
       {points.map((point) => (
-        <SelectionCard
-          cardX={point.x}
-          cardY={point.y}
-          escapeHatch={removePoints}
-        />
+        <SelectionCard cardX={point.x} cardY={point.y} />
       ))}
     </div>
   );

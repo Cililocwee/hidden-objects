@@ -1,18 +1,22 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
-export default function SelectionCard({ cardX, cardY, escapeHatch }) {
+export default function SelectionCard({ cardX, cardY }) {
   const {
     animalList,
     changeAnimalList,
     answerKey,
     convertArrOfObjsToObj,
     manipulateZoo,
+    setGameStatus,
   } = useContext(AppContext);
 
   function handleClick(choice) {
     if (checkAnswer(choice, [cardX, cardY])) {
       changeAnimalList(choice, "remove");
+      if (animalList.length === 0) {
+        console.log("complete");
+      }
     }
   }
 
