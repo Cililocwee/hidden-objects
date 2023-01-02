@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [gameTimeStart, setGameTimeStart] = useState();
   const [gameTimeFinish, setGameTimeFinish] = useState();
   const [gameDuration, setGameDuration] = useState();
+  const [highScores, setHighScores] = useState({});
 
   useEffect(() => {
     if (animalList.length === 0) {
@@ -45,10 +46,23 @@ export const AppContextProvider = ({ children }) => {
         id: doc.id,
       }));
       setAnswerKey(newData);
-      console.log("Fetch complete");
+      console.log("Fetch complete; proceed with hunting");
       setGameStatus("in progress");
       setGameTimeStart(gameTimerSnapshot());
-      console.log(gameTimerSnapshot());
+      // console.log(gameTimerSnapshot());
+    });
+  }
+
+  async function fetchHighScores() {
+    await getDocs(collection(db, "high-scores")).then((querySnapshot) => {
+      const newData = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setHighScores(newData);
+      console.log("Fetched high scores");
+      console.log(newData);
+      newData.forEach((person) => console.log(person.score));
     });
   }
 
@@ -102,6 +116,8 @@ export const AppContextProvider = ({ children }) => {
     gameStatus,
     setGameStatus,
     gameDuration,
+    fetchHighScores,
+    highScores,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

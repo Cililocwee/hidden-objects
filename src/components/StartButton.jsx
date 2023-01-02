@@ -2,10 +2,19 @@ import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 
 export default function StartButton() {
-  const { startGame } = useContext(AppContext);
+  const { startGame, fetchHighScores } = useContext(AppContext);
+
+  function handleClick() {
+    startGame();
+    fetchHighScores();
+  }
   return (
     <div>
-      <button onClick={() => startGame()} id="start-btn">
+      <button
+        // onClick={() => startGame()}
+        onClick={() => handleClick()}
+        id="start-btn"
+      >
         Start!
       </button>
     </div>

@@ -167,3 +167,28 @@
   background-color: black;
   color: white;
 }
+
+.score-box {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.score-names {
+  width: 100px;
+  border-right: 1px dashed black;
+}
+
+.score-scores,
+.score-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  list-style-type: none;
+}
+
+.score-scores h4,
+.score-names h4 {
+  border-bottom: 1px solid black;
+}
