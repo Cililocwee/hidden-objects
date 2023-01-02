@@ -8,7 +8,7 @@ export default function GameOverlay({ content }) {
 
   if (gameStatus === "idle") {
     return (
-      <div class="overlay">
+      <div className="overlay">
         <p>Try to find all four animals!</p>
         <StartButton />
       </div>

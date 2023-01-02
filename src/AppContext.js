@@ -57,9 +57,8 @@ export const AppContextProvider = ({ children }) => {
         ...doc.data(),
         id: doc.id,
       }));
+      newData.sort((a, b) => a.score - b.score);
       setHighScores(newData);
-
-      // console.log(newData);
     });
   }
 

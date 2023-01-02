@@ -40,7 +40,11 @@ export default function SelectionCard({ cardX, cardY }) {
     >
       {animalList?.map((animal) => {
         return (
-          <p className="animal" onClick={() => handleClick(animal)}>
+          <p
+            key={crypto.randomUUID()}
+            className="animal"
+            onClick={() => handleClick(animal)}
+          >
             {animal}
           </p>
         );

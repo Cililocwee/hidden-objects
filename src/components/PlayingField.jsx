@@ -40,7 +40,11 @@ export default function PlayingField({ sourceImage, classification }) {
         }}
       ></div>
       {points.map((point) => (
-        <SelectionCard cardX={point.x} cardY={point.y} />
+        <SelectionCard
+          cardX={point.x}
+          cardY={point.y}
+          key={crypto.randomUUID()}
+        />
       ))}
     </div>
   );

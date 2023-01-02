@@ -6,12 +6,25 @@ export default function GameOverScreen() {
   const [playerName, setPlayerName] = useState("");
   const [submitStatus, setSubmitStatus] = useState(false);
 
+  function checkScoreList() {
+    if (highScores.find((obj) => obj.id === playerName) === undefined) {
+      return "not in list";
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
+
     if (submitStatus === true) {
       alert("You've already submitted your score!");
       return;
     }
+
+    if (checkScoreList() !== "not in list") {
+      alert("Name already taken!");
+      return;
+    }
+
     if (playerName === "") {
       alert("You need a name!");
       return;
@@ -43,7 +56,8 @@ export default function GameOverScreen() {
           <div className="score-names">
             <h4>Name</h4>
             {highScores?.map(
-              (person, index) => index < 5 && <li>{person.id}</li>
+              (person, index) =>
+                index < 10 && <li key={crypto.randomUUID()}>{person.id}</li>
             )}
             ...
           </div>
@@ -51,7 +65,11 @@ export default function GameOverScreen() {
             <h4>Score</h4>
             {highScores?.map(
               (person, index) =>
-                index < 5 && <li>{Math.round(person.score / 10) / 100} secs</li>
+                index < 10 && (
+                  <li key={crypto.randomUUID()}>
+                    {Math.round(person.score / 10) / 100} secs
+                  </li>
+                )
             )}
             ...
           </div>

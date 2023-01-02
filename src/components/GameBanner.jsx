@@ -7,10 +7,15 @@ export default function GameBanner() {
     <div className="game-banner">
       <ul>
         {animalList?.map((animal) => (
-          <li>{animal}</li>
+          <li key={crypto.randomUUID()}>{animal}</li>
         ))}
         {zoo?.map((animal) => (
-          <li style={{ textDecoration: "line-through" }}>{animal}</li>
+          <li
+            key={crypto.randomUUID()}
+            style={{ textDecoration: "line-through" }}
+          >
+            {animal}
+          </li>
         ))}
       </ul>{" "}
     </div>
