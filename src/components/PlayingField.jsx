@@ -6,15 +6,7 @@ import { AppContext } from "../AppContext";
 import GameBanner from "./GameBanner";
 
 export default function PlayingField({ sourceImage, classification }) {
-  const {
-    animalList,
-    resetAnimalList,
-    fetchAnswers,
-    checkZoo,
-    revealAnswers,
-    startGame,
-    zoo,
-  } = useContext(AppContext);
+  const { animalList } = useContext(AppContext);
 
   // TODO queuedPoint will be queried against the db
 
@@ -31,14 +23,6 @@ export default function PlayingField({ sourceImage, classification }) {
     let y = e.clientY - rect.top - 50;
 
     setPoints([{ x: x, y: y }]);
-    // console.log(queuedPoint);
-  }
-
-  function removePoints(arr) {
-    let newPoints = points.filter(
-      (obj) => obj.x !== arr[0] && obj.y !== arr[1]
-    );
-    setPoints(newPoints);
   }
 
   return (

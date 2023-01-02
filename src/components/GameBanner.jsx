@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
-import StartButton from "./StartButton";
 
 export default function GameBanner() {
   const { animalList, zoo } = useContext(AppContext);
@@ -14,7 +13,6 @@ export default function GameBanner() {
           <li style={{ textDecoration: "line-through" }}>{animal}</li>
         ))}
       </ul>{" "}
-      {/* <StartButton /> */}
     </div>
   );
 }

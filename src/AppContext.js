@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import React, { useState, createContext, useEffect } from "react";
 import { db } from "./Firebase";
 
@@ -20,7 +20,6 @@ export const AppContextProvider = ({ children }) => {
       setGameStatus("complete");
       setGameTimeFinish(gameTimerSnapshot());
       setGameDuration(gameTimerSnapshot() - gameTimeStart);
-      console.log(gameDuration);
     }
   }, [animalList]);
 
@@ -49,7 +48,6 @@ export const AppContextProvider = ({ children }) => {
       console.log("Fetch complete; proceed with hunting");
       setGameStatus("in progress");
       setGameTimeStart(gameTimerSnapshot());
-      // console.log(gameTimerSnapshot());
     });
   }
 
@@ -60,10 +58,15 @@ export const AppContextProvider = ({ children }) => {
         id: doc.id,
       }));
       setHighScores(newData);
-      console.log("Fetched high scores");
-      console.log(newData);
-      newData.forEach((person) => console.log(person.score));
+
+      // console.log(newData);
     });
+  }
+
+  async function submitHighScore(id, score) {
+    await setDoc(doc(db, "high-scores", id), {
+      score: score,
+    }).then(fetchHighScores());
   }
 
   //converts the arr of objs from answerKey into an object
@@ -75,16 +78,6 @@ export const AppContextProvider = ({ children }) => {
     return newObj;
   }
 
-  // show the answer key in log
-  function revealAnswers() {
-    console.log(answerKey);
-  }
-
-  // for debugging purposes, reveals what is in the zoo
-  function checkZoo() {
-    console.log(zoo);
-  }
-
   // stores each animal's coords in state obj
   function manipulateZoo(choice) {
     setZoo([...zoo, choice]);
@@ -94,30 +87,22 @@ export const AppContextProvider = ({ children }) => {
     return new Date().getTime();
   }
 
-  function gameTimerStart() {
-    return new Date().getTime();
-  }
-
-  function gameTimerFinish(start) {
-    return new Date().getTime() - start;
-  }
   // exports the global states/methods
   const value = {
     animalList,
     resetAnimalList,
     changeAnimalList,
     answerKey,
-    checkZoo,
     zoo,
     manipulateZoo,
     startGame,
-    revealAnswers,
     convertArrOfObjsToObj,
     gameStatus,
     setGameStatus,
     gameDuration,
     fetchHighScores,
     highScores,
+    submitHighScore,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -10,11 +10,7 @@ export default function StartButton() {
   }
   return (
     <div>
-      <button
-        // onClick={() => startGame()}
-        onClick={() => handleClick()}
-        id="start-btn"
-      >
+      <button onClick={() => handleClick()} id="start-btn">
         Start!
       </button>
     </div>
