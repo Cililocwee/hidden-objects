@@ -10,12 +10,9 @@
     "rules": "storage.rules"
   },
   "hosting": {
+    "site": "seek-and-find",
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",

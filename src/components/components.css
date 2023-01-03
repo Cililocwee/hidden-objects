@@ -1,3 +1,5 @@
+/** PLAYING FIELD **/
+
 .playing-field-img {
   width: auto;
   height: 500px;
@@ -10,31 +12,9 @@
 }
 
 .animals-tag {
-  /* background-color: blue; */
   margin-top: 125px;
-  height: 400px;
-  width: 600px;
-}
-
-.objects-tag {
-  height: 500px;
-  width: 450px;
-}
-
-.point {
-  display: inline-block;
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  /* border-radius: 50%; */
-  border: 1px solid black;
-}
-
-.image-switcher-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  height: 700px;
+  width: 900px;
 }
 
 .playing-field {
@@ -46,64 +26,26 @@
   width: fit-content;
 }
 
-.owl-box {
-  border: 1px solid black;
-  padding: 5px 30px 50px;
-}
-
-.select-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.hidden {
-  display: none;
-}
-
-.selection-pane {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-}
-
-.selection,
-.selection-pane {
-  text-align: center;
-  width: 100%;
-}
-
-.selection:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.gameboard {
-  background-color: aliceblue;
-  height: 100vh;
-  position: relative;
-}
+/** POP UP CARDS **/
 
 .selection-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--main-color-trans);
   width: 100px;
   min-height: 100px;
   margin: 25px;
   border-radius: 16px;
-  border: 2px solid black;
+  border: 2px solid var(--main-color);
+  font-size: 1.1em;
   overflow: hidden;
   position: absolute;
 }
 
 .animal:hover {
-  background-color: gray;
+  background-color: var(--main-color);
   cursor: pointer;
   width: 100%;
   text-align: center;
@@ -113,20 +55,21 @@
   margin: 0;
 }
 
-.cancel-btn {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  cursor: pointer;
-}
-
+/** GAME BANNER**/
 .game-banner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: red;
+  background-color: var(--main-color);
   width: 100vw;
   position: absolute;
+  border-radius: 0 0 16px 16px;
+  filter: drop-shadow(2px 2px 5px black);
+  font-size: 1.5em;
+}
+
+.game-banner:hover {
+  filter: drop-shadow(5px 5px 5px black);
 }
 
 .game-banner ul {
@@ -134,68 +77,4 @@
   display: flex;
   width: 500px;
   justify-content: space-evenly;
-}
-
-.overlay {
-  width: 100%;
-  height: 100vh;
-  z-index: 99;
-  background-color: blue;
-  opacity: 90%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* top: 1000px; */
-}
-.overlay p {
-  font-size: 4em;
-  color: black;
-}
-
-#start-btn {
-  width: 200px;
-  height: 75px;
-  filter: drop-shadow(5px 5px 5px black);
-  font-size: 2em;
-  border-radius: 5px 16px 5px 16px;
-  transition: 1s;
-}
-
-#start-btn:hover {
-  background-color: black;
-  color: white;
-}
-
-.score-box {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-}
-
-.score-names {
-  width: 100px;
-  border-right: 1px dashed black;
-}
-
-.score-scores,
-.score-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100px;
-  list-style-type: none;
-}
-
-.score-scores h4,
-.score-names h4 {
-  border-bottom: 1px solid black;
-}
-
-.score-input form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
 }

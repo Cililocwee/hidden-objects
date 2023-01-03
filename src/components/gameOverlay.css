@@ -1,0 +1,118 @@
+/** OVERLAY **/
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: var(--complement-blue);
+  opacity: 90%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-highlight {
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 5px black);
+}
+
+.overlay p {
+  font-size: 4em;
+  color: black;
+}
+
+/** GAME START **/
+#start-btn {
+  width: 200px;
+  height: 75px;
+  filter: drop-shadow(5px 5px 5px black);
+  font-size: 2em;
+  border-radius: 5px 16px 5px 16px;
+  transition: 1s;
+  cursor: pointer;
+}
+
+#start-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/** GAME OVER **/
+.score-box {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.score-names {
+  width: 100px;
+  border-right: 1px dashed black;
+}
+
+.score-scores,
+.score-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  list-style-type: none;
+}
+
+.score-scores h4,
+.score-names h4 {
+  border-bottom: 1px solid black;
+}
+
+.score-input form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.high-scores {
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  padding: 0 15px;
+  border-radius: 16px;
+  margin: auto;
+  filter: drop-shadow(2px 2px 2px black);
+}
+
+#high-scores h3 {
+  font-size: 2em;
+  margin: 10px 0 0 0;
+}
+
+.score-input {
+  background-color: var(--main-color-complement);
+  width: fit-content;
+  padding: 10px 25px;
+  filter: drop-shadow(2px 2px 5px black);
+  border-radius: 16px;
+  margin: 0 auto 15px;
+  font-size: 1.2em;
+}
+
+.score-input:hover {
+  filter: drop-shadow(5px 5px 5px black);
+}
+
+.gameover-highlight {
+  text-align: center;
+  margin: 0;
+}
+
+.gameover-highlight h3 {
+  font-size: 4em;
+}

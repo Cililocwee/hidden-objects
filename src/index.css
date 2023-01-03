@@ -1,13 +1,48 @@
+:root {
+  --main-color: rgb(88 204 2);
+  --main-color-trans: rgba(88, 204, 2, 0.3);
+  --main-color-complement: red;
+
+  --main-green: rgb(88, 204, 2);
+  --main-green-dark: rgb(67 192 0);
+  --main-green-light: rgb(137, 224, 25);
+
+  --font-and-lining: rgb(75 75 75);
+  --gray: rgb(119 119 119);
+  --lightgray: rgb(175 175 175);
+  --ash: rgb(229 229 229);
+  --lightash: rgb(247 247 247);
+
+  --background-main: rgb(255 255 255);
+
+  --complement-blue: rgb(28 176 246);
+  --complement-red: rgb(255 75 75);
+  --complement-yellow: rgb(255 200 0);
+  --complement-orange: rgb(255 150 0);
+  --complement-purple: rgb(206 130 255);
+  --complement-darkblue: rgb(43 112 201);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "Oswald", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+body,
+html {
+  height: 100vh;
+  width: 100%;
+}
+
+button {
+  font-family: "Oswald";
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

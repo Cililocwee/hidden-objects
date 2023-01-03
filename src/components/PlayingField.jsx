@@ -8,11 +8,8 @@ import GameBanner from "./GameBanner";
 export default function PlayingField({ sourceImage, classification }) {
   const { animalList } = useContext(AppContext);
 
-  // TODO queuedPoint will be queried against the db
-
   const [points, setPoints] = useState([]);
 
-  // TODO Store these locations +- like 50 to database as the answers
   function getTargetLocation(e) {
     if (animalList.length === 0) {
       return;
@@ -23,6 +20,7 @@ export default function PlayingField({ sourceImage, classification }) {
     let y = e.clientY - rect.top - 50;
 
     setPoints([{ x: x, y: y }]);
+    console.log([x, y]);
   }
 
   return (

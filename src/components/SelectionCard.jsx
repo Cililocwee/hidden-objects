@@ -24,7 +24,7 @@ export default function SelectionCard({ cardX, cardY }) {
     const answerDiff = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 
     // if selection is within 30px
-    if (answerDiff < 30) {
+    if (answerDiff < 60) {
       manipulateZoo(choice);
       return true;
     }
