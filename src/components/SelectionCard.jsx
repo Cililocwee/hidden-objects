@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
-export default function SelectionCard({ cardX, cardY }) {
+export default function SelectionCard({ cardX, cardY, xPerc, yPerc }) {
   const {
     animalList,
     changeAnimalList,
@@ -11,7 +11,7 @@ export default function SelectionCard({ cardX, cardY }) {
   } = useContext(AppContext);
 
   function handleClick(choice) {
-    if (checkAnswer(choice, [cardX, cardY])) {
+    if (checkAnswer(choice, [xPerc, yPerc])) {
       changeAnimalList(choice, "remove");
     }
   }
@@ -19,12 +19,11 @@ export default function SelectionCard({ cardX, cardY }) {
   function checkAnswer(choice, arr) {
     const answerObj = convertArrOfObjsToObj(answerKey);
 
-    let xDiff = answerObj[choice][0] - arr[0];
-    let yDiff = answerObj[choice][1] - arr[1];
-    const answerDiff = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    let xDiff = Math.abs(answerObj[choice][0] - arr[0]);
+    let yDiff = Math.abs(answerObj[choice][1] - arr[1]);
 
-    // if selection is within 30px
-    if (answerDiff < 60) {
+    // if selection is within 8% of the size
+    if (xDiff < 10 && yDiff < 10) {
       manipulateZoo(choice);
       return true;
     }
@@ -34,8 +33,8 @@ export default function SelectionCard({ cardX, cardY }) {
     <div
       className="selection-card"
       style={{
-        left: cardX,
-        top: cardY + 85,
+        left: cardX + 50,
+        top: cardY + 155,
       }}
     >
       {animalList?.map((animal) => {

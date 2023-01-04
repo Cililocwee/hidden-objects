@@ -28,7 +28,6 @@ export default function ScoreBoard() {
           ...
         </div>
       </div>
-      <ol></ol>
     </div>
   );
 }

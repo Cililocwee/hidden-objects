@@ -1,8 +1,8 @@
 /** OVERLAY **/
 
 .overlay {
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   z-index: 99;
   background-color: var(--complement-blue);
   opacity: 90%;
@@ -11,6 +11,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 16px;
+  filter: drop-shadow(5px 5px 5px black);
 }
 
 .overlay-highlight {
@@ -21,11 +23,22 @@
   padding: 25px;
   border-radius: 15px;
   filter: drop-shadow(5px 5px 5px black);
+  text-align: center;
 }
 
 .overlay p {
-  font-size: 4em;
   color: black;
+}
+
+@media all and (max-width: 768px) {
+  .overlay {
+    width: 90%;
+    height: fit-content;
+    padding: 10px 0;
+  }
+  .overlay-highlight {
+    width: 75%;
+  }
 }
 
 /** GAME START **/
@@ -83,15 +96,17 @@
   flex-direction: column;
   align-items: center;
   width: fit-content;
-  padding: 0 15px;
+  padding: 5px 10px 10px 10px;
   border-radius: 16px;
   margin: auto;
+  margin-bottom: 20px;
   filter: drop-shadow(2px 2px 2px black);
+  height: fit-content;
 }
 
 #high-scores h3 {
   font-size: 2em;
-  margin: 10px 0 0 0;
+  margin: 10px;
 }
 
 .score-input {
@@ -115,4 +130,40 @@
 
 .gameover-highlight h3 {
   font-size: 4em;
+}
+
+.gameover-highlight h3,
+p {
+  margin: 0;
+}
+
+.game-over-blurb,
+.game-start-blurb {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+@media all and (max-width: 768px) {
+  .score-input form {
+    gap: 10px;
+  }
+
+  #high-scores h3 {
+    font-size: 1.5em;
+  }
+
+  .gameover-highlight h3 {
+    font-size: 2em;
+  }
+
+  .gameover-highlight h3,
+  p {
+    margin: 0;
+  }
+
+  .game-over-blurb,
+  .game-start-blurb {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
 }

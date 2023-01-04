@@ -1,20 +1,17 @@
 /** PLAYING FIELD **/
 
-.playing-field-img {
-  width: auto;
-  height: 500px;
-  overflow: hidden;
-  z-index: 0;
+body {
+  overflow-x: hidden;
 }
-
-.selection-circles {
-  z-index: 99;
-}
-
 .animals-tag {
-  margin-top: 125px;
-  height: 700px;
-  width: 900px;
+  overflow: hidden;
+}
+
+.animal-pic {
+  margin-top: 75px;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
 }
 
 .playing-field {
@@ -26,6 +23,9 @@
   width: fit-content;
 }
 
+@media all and (max-width: 768px) {
+}
+
 /** POP UP CARDS **/
 
 .selection-card {
@@ -34,7 +34,8 @@
   align-items: center;
   justify-content: space-evenly;
   background-color: var(--main-color-trans);
-  width: 100px;
+  width: fit-content;
+  padding: 0 10px;
   min-height: 100px;
   margin: 25px;
   border-radius: 16px;
@@ -58,23 +59,28 @@
 /** GAME BANNER**/
 .game-banner {
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   background-color: var(--main-color);
-  width: 100vw;
+  width: 75%;
+  height: 50px;
   position: absolute;
-  border-radius: 0 0 16px 16px;
+  border-radius: 16px;
   filter: drop-shadow(2px 2px 5px black);
   font-size: 1.5em;
+  transition: 1s;
+  list-style: none;
 }
 
 .game-banner:hover {
   filter: drop-shadow(5px 5px 5px black);
 }
 
-.game-banner ul {
-  list-style: none;
-  display: flex;
-  width: 500px;
-  justify-content: space-evenly;
+@media all and (max-width: 768px) {
+  .game-banner {
+    width: 90vw;
+  }
+  .game-banner ul {
+    width: 100%;
+  }
 }

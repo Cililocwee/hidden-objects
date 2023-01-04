@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 import ScoreBoard from "./ScoreBoard";
 import ScoreInput from "./ScoreInput";
@@ -10,7 +10,7 @@ export default function GameOverScreen() {
     <div className="overlay">
       <div className="gameover-highlight">
         <h3>Congratulations!</h3>
-        <p>
+        <p className="game-over-blurb">
           You completed the game in&nbsp;
           {Math.round(gameDuration / 10) / 100} seconds!
         </p>
