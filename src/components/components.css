@@ -36,7 +36,6 @@ body {
   justify-content: space-evenly;
   background-color: var(--main-color-trans);
   width: fit-content;
-  padding: 0 10px;
   min-height: 100px;
   margin: 25px;
   border-radius: 16px;
@@ -44,6 +43,10 @@ body {
   font-size: 1.1em;
   overflow: hidden;
   position: absolute;
+}
+
+.selection-card p {
+  padding: 0 10px;
 }
 
 .animal:hover {

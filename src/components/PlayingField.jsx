@@ -5,14 +5,21 @@ import SelectionCard from "./SelectionCard";
 import { AppContext } from "../AppContext";
 import GameBanner from "./GameBanner";
 import animalPic from "../assets/ONLY-IMG-find-10-animals.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function PlayingField({ sourceImage, classification }) {
   const { animalList } = useContext(AppContext);
 
   const [points, setPoints] = useState([]);
-  const [pointsPerc, setPointsPerc] = useState([]);
+  const [displayFlag, setDisplayFlag] = useState(false);
 
   function getTargetLocation(e) {
+    if (displayFlag) {
+      setDisplayFlag(false);
+    } else {
+      setDisplayFlag(true);
+    }
     if (animalList.length === 0) {
       return;
     }
@@ -26,11 +33,15 @@ export default function PlayingField({ sourceImage, classification }) {
     let yPerc = Math.round((y / e.target.height) * 100);
 
     setPoints([{ x: x, y: y, xp: xPerc, yp: yPerc }]);
-
-    console.log([xPerc, yPerc]);
-    // console.log(e.target.height);
-    // console.log([xPerc, yPerc]);
   }
+
+  const notify = (type) => {
+    if (type === "success") {
+      toast.success("Correct!");
+    } else {
+      toast.warning("Incorrect...");
+    }
+  };
 
   return (
     <div className="playing-field">
@@ -38,6 +49,14 @@ export default function PlayingField({ sourceImage, classification }) {
 
       {/* TODO Get rid of classification */}
       <div className={classification}>
+        <ToastContainer
+          autoClose={1000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          theme="colored"
+        />
         <img
           onClick={getTargetLocation}
           src={animalPic}
@@ -45,15 +64,18 @@ export default function PlayingField({ sourceImage, classification }) {
           className="animal-pic"
         />
       </div>
-      {points.map((point) => (
-        <SelectionCard
-          cardX={point.x}
-          cardY={point.y}
-          xPerc={point.xp}
-          yPerc={point.yp}
-          key={crypto.randomUUID()}
-        />
-      ))}
+      {displayFlag &&
+        points.map((point) => (
+          <SelectionCard
+            cardX={point.x}
+            cardY={point.y}
+            xPerc={point.xp}
+            yPerc={point.yp}
+            escapeHatch={() => setDisplayFlag(false)}
+            signal={notify}
+            key={crypto.randomUUID()}
+          />
+        ))}
     </div>
   );
 }

@@ -1,7 +1,14 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
-export default function SelectionCard({ cardX, cardY, xPerc, yPerc }) {
+export default function SelectionCard({
+  cardX,
+  cardY,
+  xPerc,
+  yPerc,
+  escapeHatch,
+  signal,
+}) {
   const {
     animalList,
     changeAnimalList,
@@ -25,7 +32,12 @@ export default function SelectionCard({ cardX, cardY, xPerc, yPerc }) {
     // if selection is within 8% of the size
     if (xDiff < 10 && yDiff < 10) {
       manipulateZoo(choice);
+      escapeHatch();
+      signal("success");
       return true;
+    } else {
+      signal();
+      escapeHatch();
     }
   }
 
