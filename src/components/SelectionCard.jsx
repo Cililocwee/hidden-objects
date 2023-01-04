@@ -33,8 +33,8 @@ export default function SelectionCard({ cardX, cardY, xPerc, yPerc }) {
     <div
       className="selection-card"
       style={{
-        left: cardX + 50,
-        top: cardY + 155,
+        left: cardX,
+        top: cardY,
       }}
     >
       {animalList?.map((animal) => {

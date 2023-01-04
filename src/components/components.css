@@ -10,6 +10,7 @@ body {
 .animal-pic {
   margin-top: 75px;
   width: 100%;
+  max-width: 1000px;
   height: fit-content;
   overflow: hidden;
 }

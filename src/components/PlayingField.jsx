@@ -18,17 +18,17 @@ export default function PlayingField({ sourceImage, classification }) {
     }
 
     let rect = e.currentTarget.getBoundingClientRect();
-    let x = e.clientX - rect.left - 75;
-    let y = e.clientY - rect.top - 110;
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
 
     // This is good as a start, it only finds the percentage of the WINDOW
-    let xPerc = Math.round((e.clientX / e.target.width) * 100);
-    // TODO Get rid of magic number 268
-    let yPerc = Math.round(((e.clientY - 268) / e.target.height) * 100);
+    let xPerc = Math.round((x / e.target.width) * 100);
+    let yPerc = Math.round((y / e.target.height) * 100);
 
     setPoints([{ x: x, y: y, xp: xPerc, yp: yPerc }]);
 
-    // console.log(e.clientY);
+    console.log([xPerc, yPerc]);
+    // console.log(e.target.height);
     // console.log([xPerc, yPerc]);
   }
 
