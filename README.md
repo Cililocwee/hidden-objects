@@ -70,7 +70,7 @@ This is a passion project that combines my love of teaching with my passion for 
 
 ### Built With
 
-- [[React][react.js]][react-url]
+[![React][react.js]][react-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -163,7 +163,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - corrie.stroup@gmail.com
+Corrie Stroup - corrie.stroup@gmail.com
 
 Project Link: [https://github.com/Cililocwee/hidden-objects](https://github.com/Cililocwee/hidden-objects)
 
