@@ -36,7 +36,9 @@ body {
   justify-content: space-evenly;
   background-color: var(--main-color-trans);
   width: fit-content;
-  min-height: 100px;
+  min-height: 50px;
+  max-height: 150px;
+  /* flex-wrap: wrap; */
   margin: 25px;
   border-radius: 16px;
   border: 2px solid var(--main-color);
@@ -84,23 +86,23 @@ body {
 
 @media all and (max-width: 900px) {
   .game-banner {
-    width: 90vw;
-    flex-wrap: wrap;
-    height: fit-content;
-    min-height: 50px;
-    gap: 10px;
     transform: translateY(-50%);
   }
 }
 
 @media all and (max-width: 768px) {
   .game-banner {
-    width: 90vw;
+    width: 80vw;
     flex-wrap: wrap;
     height: fit-content;
+    text-align: center;
     min-height: 50px;
-
     transform: translateY(-100%);
+    padding: 5px 15px;
+  }
+
+  .game-banner li {
+    margin: 0 5px;
   }
 
   .game-banner ul {

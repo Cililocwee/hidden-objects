@@ -17,23 +17,40 @@ export default function SelectionCard({
     manipulateZoo,
   } = useContext(AppContext);
 
-  const [xModifier, setXModifier] = useState(-75);
-  const [yModifier, setYModifier] = useState(-75);
+  const [xModifier, setXModifier] = useState(0);
+  const [yModifier, setYModifier] = useState(0);
 
-  useEffect(() => {
-    if (xPerc > 50) {
-      // setXModifier(-135);
-      setXModifier(-17 * animalList.length);
-    } else {
-      setXModifier(0);
-    }
-    if (yPerc > 50) {
-      // setYModifier(-135);
-      setYModifier(-17 * animalList.length);
-    } else {
-      setYModifier(0);
-    }
-  }, [xPerc, yPerc]);
+  function checkWidth() {
+    return window.matchMedia("(max-width: 786px)").matches;
+  }
+
+  // useEffect(() => {
+  //   console.log(checkWidth());
+  //   if (checkWidth()) {
+  //     if (xPerc > 50) {
+  //       setXModifier(-100);
+  //     } else {
+  //       setXModifier(0);
+  //     }
+  //     // if (yPerc > 50) {
+  //     //   setYModifier(-55);
+  //     // } else {
+  //     //   setYModifier(0);
+  //     // }
+  //   }
+  //   if (!checkWidth()) {
+  //     if (xPerc > 50) {
+  //       setXModifier(-100);
+  //     } else {
+  //       setXModifier(0);
+  //     }
+  //     // if (yPerc > 50) {
+  //     //   setYModifier(-135);
+  //     // } else {
+  //     //   setYModifier(35);
+  //     // }
+  //   }
+  // }, [xPerc, yPerc]);
 
   function handleClick(choice) {
     if (checkAnswer(choice, [xPerc, yPerc])) {
@@ -59,25 +76,41 @@ export default function SelectionCard({
     }
   }
 
-  return (
-    <div
-      className="selection-card"
-      style={{
-        left: cardX + xModifier,
-        top: cardY + yModifier,
-      }}
-    >
-      {animalList?.map((animal) => {
-        return (
-          <p
-            key={crypto.randomUUID()}
-            className="animal"
-            onClick={() => handleClick(animal)}
-          >
-            {animal}
-          </p>
-        );
-      })}
-    </div>
-  );
+  if (xPerc > 50) {
+    return (
+      <div
+        className="selection-card"
+        style={{
+          left: cardX - 100,
+          top: cardY + 20,
+        }}
+      >
+        <p
+          key={crypto.randomUUID()}
+          className="animal"
+          onClick={() => handleClick(animalList[0])}
+        >
+          {animalList[0]}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className="selection-card"
+        style={{
+          left: cardX - 5,
+          top: cardY + 20,
+        }}
+      >
+        <p
+          key={crypto.randomUUID()}
+          className="animal"
+          onClick={() => handleClick(animalList[0])}
+        >
+          {animalList[0]}
+        </p>
+      </div>
+    );
+  }
 }

@@ -159,6 +159,10 @@ p {
     gap: 10px;
   }
 
+  .high-scores {
+    max-height: 250px;
+  }
+
   #high-scores h3 {
     font-size: 1.5em;
   }
