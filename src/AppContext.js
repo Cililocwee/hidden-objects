@@ -27,7 +27,6 @@ export const AppContextProvider = ({ children }) => {
     answerKey.forEach((entry) => {
       animalQueue.push(entry.id);
       setAnimalList(animalQueue);
-      console.log(entry.id);
     });
   }, [answerKey]);
 

@@ -8,7 +8,7 @@ import animalPic from "../assets/ONLY-IMG-find-10-animals.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function PlayingField({ sourceImage, classification }) {
+export default function PlayingField({ classification }) {
   const { animalList, answerKey } = useContext(AppContext);
 
   const [points, setPoints] = useState([]);
@@ -33,7 +33,9 @@ export default function PlayingField({ sourceImage, classification }) {
     let yPerc = Math.round((y / e.target.height) * 100);
 
     setPoints([{ x: x, y: y, xp: xPerc, yp: yPerc }]);
-    console.log([xPerc, yPerc]);
+
+    //** debugging, useful when adding new picture maps
+    // console.log([xPerc, yPerc]);
   }
 
   const notify = (type) => {

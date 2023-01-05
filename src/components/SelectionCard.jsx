@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
 export default function SelectionCard({
@@ -23,34 +23,6 @@ export default function SelectionCard({
   function checkWidth() {
     return window.matchMedia("(max-width: 786px)").matches;
   }
-
-  // useEffect(() => {
-  //   console.log(checkWidth());
-  //   if (checkWidth()) {
-  //     if (xPerc > 50) {
-  //       setXModifier(-100);
-  //     } else {
-  //       setXModifier(0);
-  //     }
-  //     // if (yPerc > 50) {
-  //     //   setYModifier(-55);
-  //     // } else {
-  //     //   setYModifier(0);
-  //     // }
-  //   }
-  //   if (!checkWidth()) {
-  //     if (xPerc > 50) {
-  //       setXModifier(-100);
-  //     } else {
-  //       setXModifier(0);
-  //     }
-  //     // if (yPerc > 50) {
-  //     //   setYModifier(-135);
-  //     // } else {
-  //     //   setYModifier(35);
-  //     // }
-  //   }
-  // }, [xPerc, yPerc]);
 
   function handleClick(choice) {
     if (checkAnswer(choice, [xPerc, yPerc])) {
@@ -81,17 +53,21 @@ export default function SelectionCard({
       <div
         className="selection-card"
         style={{
-          left: cardX - 100,
-          top: cardY + 20,
+          left: cardX - 125,
+          top: cardY - 25,
         }}
       >
-        <p
-          key={crypto.randomUUID()}
-          className="animal"
-          onClick={() => handleClick(animalList[0])}
-        >
-          {animalList[0]}
-        </p>
+        {animalList?.map((animal) => {
+          return (
+            <p
+              key={crypto.randomUUID()}
+              className="animal"
+              onClick={() => handleClick(animal)}
+            >
+              {animal}
+            </p>
+          );
+        })}
       </div>
     );
   } else {
@@ -103,13 +79,17 @@ export default function SelectionCard({
           top: cardY + 20,
         }}
       >
-        <p
-          key={crypto.randomUUID()}
-          className="animal"
-          onClick={() => handleClick(animalList[0])}
-        >
-          {animalList[0]}
-        </p>
+        {animalList?.map((animal) => {
+          return (
+            <p
+              key={crypto.randomUUID()}
+              className="animal"
+              onClick={() => handleClick(animal)}
+            >
+              {animal}
+            </p>
+          );
+        })}
       </div>
     );
   }

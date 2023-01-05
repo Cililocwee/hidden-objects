@@ -4,7 +4,7 @@ import GameOverScreen from "./GameOverScreen";
 import StartButton from "./StartButton";
 import "./gameOverlay.css";
 
-export default function GameOverlay({ content }) {
+export default function GameOverlay() {
   const { gameStatus } = useContext(AppContext);
 
   if (gameStatus === "idle") {

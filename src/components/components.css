@@ -37,8 +37,6 @@ body {
   background-color: var(--main-color-trans);
   width: fit-content;
   min-height: 50px;
-  max-height: 150px;
-  /* flex-wrap: wrap; */
   margin: 25px;
   border-radius: 16px;
   border: 2px solid var(--main-color);
