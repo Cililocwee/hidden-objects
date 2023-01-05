@@ -65,7 +65,7 @@ This is a passion project that combines my love of teaching with my passion for 
 ## About The Project
 
 <img src=".src/assets/Seek-and-Find-Vocabulary.png"/>
-[Live Demo](seek-and-find.web.app)
+![screenshot of project](https://github.com/Cililocwee/hidden-objects/blob/main/src/assets/Seek-and-Find-Vocabulary.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
