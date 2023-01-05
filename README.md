@@ -64,7 +64,7 @@ This is a passion project that combines my love of teaching with my passion for 
 
 ## About The Project
 
-<img src=".src/assets/Seek-and-Find-Vocabulary.png"
+<img src=".src/assets/Seek-and-Find-Vocabulary.png"/>
 [Live Demo](seek-and-find.web.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
