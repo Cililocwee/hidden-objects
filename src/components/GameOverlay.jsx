@@ -12,8 +12,8 @@ export default function GameOverlay() {
       <div className="overlay">
         <div className="overlay-highlight">
           <p className="game-start-blurb">
-            Try to find all four animals! <br /> Click each animal and select
-            the correct word!
+            Try to find all the animals! <br /> Click each animal and select the
+            correct word!
           </p>
           <StartButton />
         </div>
