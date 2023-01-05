@@ -64,8 +64,7 @@ This is a passion project that combines my love of teaching with my passion for 
 
 ## About The Project
 
-<img src=".src/assets/Seek-and-Find-Vocabulary.png"/>
-![screenshot of project](https://github.com/Cililocwee/hidden-objects/blob/main/src/assets/Seek-and-Find-Vocabulary.png)
+<a href="https://drive.google.com/uc?export=view&id=1KysJ_Ahzj0p2Bvnm3YR6ukVCWQd7r7dh"><img src="https://drive.google.com/uc?export=view&id=1KysJ_Ahzj0p2Bvnm3YR6ukVCWQd7r7dh" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
