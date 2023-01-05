@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../AppContext";
 
 export default function SelectionCard({
@@ -16,6 +16,24 @@ export default function SelectionCard({
     convertArrOfObjsToObj,
     manipulateZoo,
   } = useContext(AppContext);
+
+  const [xModifier, setXModifier] = useState(-75);
+  const [yModifier, setYModifier] = useState(-75);
+
+  useEffect(() => {
+    if (xPerc > 50) {
+      // setXModifier(-135);
+      setXModifier(-17 * animalList.length);
+    } else {
+      setXModifier(0);
+    }
+    if (yPerc > 50) {
+      // setYModifier(-135);
+      setYModifier(-17 * animalList.length);
+    } else {
+      setYModifier(0);
+    }
+  }, [xPerc, yPerc]);
 
   function handleClick(choice) {
     if (checkAnswer(choice, [xPerc, yPerc])) {
@@ -45,8 +63,8 @@ export default function SelectionCard({
     <div
       className="selection-card"
       style={{
-        left: cardX,
-        top: cardY,
+        left: cardX + xModifier,
+        top: cardY + yModifier,
       }}
     >
       {animalList?.map((animal) => {

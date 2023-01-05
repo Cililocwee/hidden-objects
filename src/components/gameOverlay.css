@@ -2,7 +2,8 @@
 
 .overlay {
   width: 75%;
-  height: 75%;
+  height: fit-content;
+  min-height: 400px;
   z-index: 99;
   background-color: var(--complement-blue);
   opacity: 90%;
@@ -62,6 +63,7 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
+  margin-bottom: 10px;
 }
 
 .score-names {
@@ -97,11 +99,13 @@
   align-items: center;
   width: fit-content;
   padding: 5px 10px 10px 10px;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   margin: auto;
   margin-bottom: 20px;
   filter: drop-shadow(2px 2px 2px black);
   height: fit-content;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 #high-scores h3 {
@@ -141,6 +145,13 @@ p {
 .game-start-blurb {
   font-size: 1.5em;
   margin: 0 0 10px 0;
+}
+
+.score-btn-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
 }
 
 @media all and (max-width: 768px) {

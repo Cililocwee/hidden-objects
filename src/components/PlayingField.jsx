@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function PlayingField({ sourceImage, classification }) {
-  const { animalList } = useContext(AppContext);
+  const { animalList, answerKey } = useContext(AppContext);
 
   const [points, setPoints] = useState([]);
   const [displayFlag, setDisplayFlag] = useState(false);
@@ -33,6 +33,7 @@ export default function PlayingField({ sourceImage, classification }) {
     let yPerc = Math.round((y / e.target.height) * 100);
 
     setPoints([{ x: x, y: y, xp: xPerc, yp: yPerc }]);
+    console.log([xPerc, yPerc]);
   }
 
   const notify = (type) => {

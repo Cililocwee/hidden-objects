@@ -5,8 +5,7 @@ import { db } from "./Firebase";
 export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
-  const originalAnimalList = ["owl", "rabbit", "bear", "deer"];
-  const [animalList, setAnimalList] = useState(originalAnimalList);
+  const [animalList, setAnimalList] = useState(["Welcome to Find and Seek!"]);
   const [answerKey, setAnswerKey] = useState([]);
   const [zoo, setZoo] = useState([]);
   const [gameStatus, setGameStatus] = useState("idle");
@@ -14,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [gameTimeFinish, setGameTimeFinish] = useState();
   const [gameDuration, setGameDuration] = useState();
   const [highScores, setHighScores] = useState({});
+  let animalQueue = [];
 
   useEffect(() => {
     if (animalList.length === 0) {
@@ -23,9 +23,13 @@ export const AppContextProvider = ({ children }) => {
     }
   }, [animalList]);
 
-  function resetAnimalList() {
-    setAnimalList(originalAnimalList);
-  }
+  useEffect(() => {
+    answerKey.forEach((entry) => {
+      animalQueue.push(entry.id);
+      setAnimalList(animalQueue);
+      console.log(entry.id);
+    });
+  }, [answerKey]);
 
   // adds or removes animals from the list as they are chosen
   function changeAnimalList(choice, flag = "add") {
@@ -46,6 +50,7 @@ export const AppContextProvider = ({ children }) => {
       }));
       setAnswerKey(newData);
       console.log("Fetch complete; proceed with hunting");
+
       setGameStatus("in progress");
       setGameTimeStart(gameTimerSnapshot());
     });
@@ -89,7 +94,7 @@ export const AppContextProvider = ({ children }) => {
   // exports the global states/methods
   const value = {
     animalList,
-    resetAnimalList,
+
     changeAnimalList,
     answerKey,
     zoo,

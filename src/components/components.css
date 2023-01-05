@@ -43,6 +43,7 @@ body {
   font-size: 1.1em;
   overflow: hidden;
   position: absolute;
+  transition: 0.5s;
 }
 
 .selection-card p {
@@ -74,16 +75,34 @@ body {
   font-size: 1.5em;
   transition: 1s;
   list-style: none;
+  padding: 5px 25px;
 }
 
 .game-banner:hover {
   filter: drop-shadow(5px 5px 5px black);
 }
 
+@media all and (max-width: 900px) {
+  .game-banner {
+    width: 90vw;
+    flex-wrap: wrap;
+    height: fit-content;
+    min-height: 50px;
+    gap: 10px;
+    transform: translateY(-50%);
+  }
+}
+
 @media all and (max-width: 768px) {
   .game-banner {
     width: 90vw;
+    flex-wrap: wrap;
+    height: fit-content;
+    min-height: 50px;
+
+    transform: translateY(-100%);
   }
+
   .game-banner ul {
     width: 100%;
   }
