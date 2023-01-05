@@ -5,7 +5,9 @@ import { db } from "./Firebase";
 export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
-  const [animalList, setAnimalList] = useState(["Welcome to Find and Seek!"]);
+  const [animalList, setAnimalList] = useState([
+    "Welcome to Seek and Find Vocabulary!",
+  ]);
   const [answerKey, setAnswerKey] = useState([]);
   const [zoo, setZoo] = useState([]);
   const [gameStatus, setGameStatus] = useState("idle");
