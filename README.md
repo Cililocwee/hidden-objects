@@ -21,7 +21,8 @@
 
 This is a passion project that combines my love of teaching with my passion for programming.
 <br />
-<a href="https://github.com/Cililocwee/hidden-objects"><strong>Explore the docs »</strong></a>
+
+<!-- <a href="https://github.com/Cililocwee/hidden-objects"><strong>Explore the docs »</strong></a> -->
 <br />
 <br />
 <a href="https://github.com/Cililocwee/hidden-objects">View Demo</a>
@@ -43,7 +44,7 @@ This is a passion project that combines my love of teaching with my passion for 
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
+    <!-- <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
@@ -51,11 +52,11 @@ This is a passion project that combines my love of teaching with my passion for 
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -63,13 +64,14 @@ This is a passion project that combines my love of teaching with my passion for 
 
 ## About The Project
 
-[![<img src=".src/assets/Seek-and-Find-Vocabulary.png"][seek and find vocabulary]](seek-and-find.web.app)
+<img src=".src/assets/Seek-and-Find-Vocabulary.png"
+[Live Demo](seek-and-find.web.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-- [![React][react.js]][react-url]
+- [[React][react.js]][react-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,7 +178,7 @@ Project Link: [https://github.com/Cililocwee/hidden-objects](https://github.com/
 - []()
 - []() -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
