@@ -4,8 +4,10 @@ import GameOverScreen from "./GameOverScreen";
 import StartButton from "./StartButton";
 import "./gameOverlay.css";
 
-export default function GameOverlay() {
-  const { gameStatus } = useContext(AppContext);
+export default function GameOverlay(): JSX.Element | undefined {
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+  const { gameStatus } = currentContext;
 
   if (gameStatus === "idle") {
     return (

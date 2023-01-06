@@ -1,11 +1,16 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ScoreBoard() {
-  const { highScores } = useContext(AppContext);
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+  // const { highScores } = useContext(AppContext);
+  const { highScores } = currentContext;
+
   const [lengthFlag, setLengthFlag] = useState(5);
 
-  function handleChangeScoreDisplay(num) {
+  function handleChangeScoreDisplay(num: number): void {
     setLengthFlag(num);
   }
 
@@ -20,18 +25,16 @@ export default function ScoreBoard() {
         <div className="score-names">
           <h4>Name</h4>
           {highScores?.map(
-            (person, index) =>
-              index < lengthFlag && (
-                <li key={crypto.randomUUID()}>{person.id}</li>
-              )
+            (person: { id: string; score: number }, index: number) =>
+              index < lengthFlag && <li key={uuidv4()}>{person.id}</li>
           )}
         </div>
         <div className="score-scores">
           <h4>Score</h4>
           {highScores?.map(
-            (person, index) =>
+            (person: { id: string; score: number }, index: number) =>
               index < lengthFlag && (
-                <li key={crypto.randomUUID()}>
+                <li key={uuidv4()}>
                   {Math.round(person.score / 10) / 100} secs
                 </li>
               )

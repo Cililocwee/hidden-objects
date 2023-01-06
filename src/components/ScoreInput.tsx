@@ -1,18 +1,24 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
-export default function ScoreInput() {
-  const { gameDuration, highScores, submitHighScore } = useContext(AppContext);
+export default function ScoreInput(): JSX.Element {
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+  const { gameDuration, highScores, submitHighScore } = currentContext;
   const [playerName, setPlayerName] = useState("");
   const [submitStatus, setSubmitStatus] = useState(false);
 
-  function checkScoreList() {
-    if (highScores.find((obj) => obj.id === playerName) === undefined) {
+  function checkScoreList(): undefined | string {
+    if (
+      highScores.find(
+        (obj: { id: string; score: number }) => obj.id === playerName
+      ) === undefined
+    ) {
       return "not in list";
     }
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
     if (submitStatus === true) {

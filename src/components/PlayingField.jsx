@@ -8,8 +8,10 @@ import animalPic from "../assets/ONLY-IMG-find-10-animals.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// TODO convert to typescript
+
 export default function PlayingField({ classification }) {
-  const { animalList, answerKey } = useContext(AppContext);
+  const { animalList } = useContext(AppContext);
 
   const [points, setPoints] = useState([]);
   const [displayFlag, setDisplayFlag] = useState(false);

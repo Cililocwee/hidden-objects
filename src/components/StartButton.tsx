@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
 
-export default function StartButton() {
-  const { startGame, fetchHighScores } = useContext(AppContext);
+export default function StartButton(): JSX.Element {
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+  const { startGame, fetchHighScores } = currentContext;
 
-  // TODO Not working
-
-  function handleClick() {
+  function handleClick(): void {
     startGame();
     fetchHighScores();
   }

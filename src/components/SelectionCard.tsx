@@ -1,5 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../AppContext";
+import { v4 as uuidv4 } from "uuid";
+
+interface Props {
+  cardX: number;
+  cardY: number;
+  xPerc: number;
+  yPerc: number;
+  escapeHatch: () => void;
+  signal: (arg0?: string) => void;
+}
 
 export default function SelectionCard({
   cardX,
@@ -8,29 +18,25 @@ export default function SelectionCard({
   yPerc,
   escapeHatch,
   signal,
-}) {
+}: Props): JSX.Element {
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+
   const {
     animalList,
     changeAnimalList,
     answerKey,
     convertArrOfObjsToObj,
     manipulateZoo,
-  } = useContext(AppContext);
+  } = currentContext;
 
-  const [xModifier, setXModifier] = useState(0);
-  const [yModifier, setYModifier] = useState(0);
-
-  function checkWidth() {
-    return window.matchMedia("(max-width: 786px)").matches;
-  }
-
-  function handleClick(choice) {
+  function handleClick(choice: string): void {
     if (checkAnswer(choice, [xPerc, yPerc])) {
       changeAnimalList(choice, "remove");
     }
   }
 
-  function checkAnswer(choice, arr) {
+  function checkAnswer(choice: string, arr: number[]): boolean | undefined {
     const answerObj = convertArrOfObjsToObj(answerKey);
 
     let xDiff = Math.abs(answerObj[choice][0] - arr[0]);
@@ -57,10 +63,10 @@ export default function SelectionCard({
           top: cardY - 25,
         }}
       >
-        {animalList?.map((animal) => {
+        {animalList?.map((animal: string) => {
           return (
             <p
-              key={crypto.randomUUID()}
+              key={uuidv4()}
               className="animal"
               onClick={() => handleClick(animal)}
             >
@@ -79,10 +85,10 @@ export default function SelectionCard({
           top: cardY + 20,
         }}
       >
-        {animalList?.map((animal) => {
+        {animalList?.map((animal: string) => {
           return (
             <p
-              key={crypto.randomUUID()}
+              key={uuidv4()}
               className="animal"
               onClick={() => handleClick(animal)}
             >
