@@ -7,16 +7,33 @@ import GameBanner from "./GameBanner";
 import animalPic from "../assets/ONLY-IMG-find-10-animals.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { v4 as uuidv4 } from "uuid";
 
 // TODO convert to typescript
 
-export default function PlayingField({ classification }) {
-  const { animalList } = useContext(AppContext);
+interface Props {
+  classification: string;
+}
 
-  const [points, setPoints] = useState([]);
-  const [displayFlag, setDisplayFlag] = useState(false);
+export default function PlayingField({ classification }: Props) {
+  // TODO Better implementation
+  const currentContext: any = useContext(AppContext);
+  const { animalList } = currentContext;
 
-  function getTargetLocation(e) {
+  const [points, setPoints] = useState<Point[]>([]);
+  const [displayFlag, setDisplayFlag] = useState<boolean>(false);
+
+  interface Point {
+    x: number;
+    y: number;
+    xp: number;
+    yp: number;
+  }
+
+  // TODO Correctly type the even
+  function getTargetLocation(e: any): void {
+    // This is the pattern it will use
+    // const target = e.target as ?????;
     if (displayFlag) {
       setDisplayFlag(false);
     } else {
@@ -40,13 +57,13 @@ export default function PlayingField({ classification }) {
     // console.log([xPerc, yPerc]);
   }
 
-  const notify = (type) => {
+  function notify(type: string): void {
     if (type === "success") {
       toast.success("Correct!");
-    } else {
+    } else if (type === "failure") {
       toast.warning("Incorrect...");
     }
-  };
+  }
 
   return (
     <div className="playing-field">
@@ -77,8 +94,9 @@ export default function PlayingField({ classification }) {
             xPerc={point.xp}
             yPerc={point.yp}
             escapeHatch={() => setDisplayFlag(false)}
-            signal={notify}
-            key={crypto.randomUUID()}
+            signalSuccess={() => notify("success")}
+            signalFailure={() => notify("failure")}
+            key={uuidv4()}
           />
         ))}
     </div>

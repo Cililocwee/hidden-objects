@@ -8,7 +8,7 @@ export default function ScoreBoard() {
   // const { highScores } = useContext(AppContext);
   const { highScores } = currentContext;
 
-  const [lengthFlag, setLengthFlag] = useState(5);
+  const [lengthFlag, setLengthFlag] = useState<number>(5);
 
   function handleChangeScoreDisplay(num: number): void {
     setLengthFlag(num);

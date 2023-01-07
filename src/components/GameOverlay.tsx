@@ -4,7 +4,7 @@ import GameOverScreen from "./GameOverScreen";
 import StartButton from "./StartButton";
 import "./gameOverlay.css";
 
-export default function GameOverlay(): JSX.Element | undefined {
+export default function GameOverlay(): JSX.Element {
   // TODO Better implementation
   const currentContext: any = useContext(AppContext);
   const { gameStatus } = currentContext;
@@ -22,6 +22,13 @@ export default function GameOverlay(): JSX.Element | undefined {
       </div>
     );
   } else if (gameStatus === "complete") {
-    return <GameOverScreen />;
+    return (
+      <div>
+        <GameOverScreen />
+      </div>
+    );
+  } else {
+    // !! This is not right, isn't there a way without rendering an empty div?
+    return <div style={{ display: "none" }}></div>;
   }
 }

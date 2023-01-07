@@ -1,5 +1,10 @@
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
-import React, { useState, createContext, useEffect } from "react";
+import React, {
+  useState,
+  createContext,
+  useEffect,
+  ProviderProps,
+} from "react";
 import { db } from "./Firebase";
 
 export const AppContext = createContext(null);
@@ -14,7 +19,7 @@ export const AppContextProvider = ({ children }) => {
   const [gameTimeStart, setGameTimeStart] = useState();
   const [gameTimeFinish, setGameTimeFinish] = useState();
   const [gameDuration, setGameDuration] = useState();
-  const [highScores, setHighScores] = useState({});
+  const [highScores, setHighScores] = useState([]);
   let animalQueue = [];
 
   useEffect(() => {
@@ -71,7 +76,7 @@ export const AppContextProvider = ({ children }) => {
   async function submitHighScore(id, score) {
     await setDoc(doc(db, "high-scores", id), {
       score: score,
-    }).then(fetchHighScores());
+    }).then(await fetchHighScores());
   }
 
   //converts the arr of objs from answerKey into an object
@@ -95,7 +100,6 @@ export const AppContextProvider = ({ children }) => {
   // exports the global states/methods
   const value = {
     animalList,
-
     changeAnimalList,
     answerKey,
     zoo,

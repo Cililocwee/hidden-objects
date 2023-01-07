@@ -8,7 +8,8 @@ interface Props {
   xPerc: number;
   yPerc: number;
   escapeHatch: () => void;
-  signal: (arg0?: string) => void;
+  signalSuccess: () => void;
+  signalFailure: () => void;
 }
 
 export default function SelectionCard({
@@ -17,7 +18,8 @@ export default function SelectionCard({
   xPerc,
   yPerc,
   escapeHatch,
-  signal,
+  signalSuccess,
+  signalFailure,
 }: Props): JSX.Element {
   // TODO Better implementation
   const currentContext: any = useContext(AppContext);
@@ -46,10 +48,10 @@ export default function SelectionCard({
     if (xDiff < 10 && yDiff < 10) {
       manipulateZoo(choice);
       escapeHatch();
-      signal("success");
+      signalSuccess();
       return true;
     } else {
-      signal();
+      signalFailure();
       escapeHatch();
     }
   }
