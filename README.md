@@ -10,9 +10,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Cililocwee/hidden-objects">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
 <h3 align="center">Seek-and-Find Vocabulary</h3>
 
@@ -64,8 +61,7 @@ This is a passion project that combines my love of teaching with my passion for 
 
 ## About The Project
 
-<a href="https://drive.google.com/uc?export=view&id=1KysJ_Ahzj0p2Bvnm3YR6ukVCWQd7r7dh"><img src="https://drive.google.com/uc?export=view&id=1KysJ_Ahzj0p2Bvnm3YR6ukVCWQd7r7dh" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
+![Seek and Find Demo](https://i.imgur.com/K58ybZf.gif)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
